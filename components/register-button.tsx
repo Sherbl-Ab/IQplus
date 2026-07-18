@@ -1,0 +1,1 @@
+"use client";import { Button, type ButtonProps } from "@/components/ui/button";export function RegisterButton(props:ButtonProps){return <Button {...props} onClick={()=>window.dispatchEvent(new Event("open-registration"))}/>}
