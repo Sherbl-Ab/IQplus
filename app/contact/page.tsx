@@ -5,43 +5,49 @@ import {
   MapPin,
   MessageCircle,
   Phone,
+  Send,
 } from "lucide-react";
 
 import { Reveal } from "@/components/motion-reveal";
 import { RegisterButton } from "@/components/register-button";
+import { Button } from "@/components/ui/button";
 
 const contactItems = [
   {
     icon: Phone,
     title: "الهاتف",
     value: "050-2933050",
+    description: "للاستفسار والتسجيل",
     href: "tel:0502933050",
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    value: "تواصلوا معنا مباشرة",
-    href: "https://wa.me/972502933050",
+    value: "تواصل مباشر وسريع",
+    description: "للحصول على التفاصيل أو طلب الموقع",
+    href: "https://wa.me/972502933050?text=مرحبا،%20أرغب%20في%20الحصول%20على%20موقع%20مركز%20IQ%20PLUS",
   },
   {
     icon: Mail,
     title: "البريد الإلكتروني",
     value: "IQPluss2025@gmail.com",
+    description: "للمراسلات والاستفسارات",
     href: "mailto:IQPluss2025@gmail.com",
   },
   {
     icon: Instagram,
     title: "Instagram",
     value: "@iqplus_center",
+    description: "لمتابعة الدورات والأخبار",
     href: "https://www.instagram.com/iqplus_center",
   },
 ];
 
 export default function ContactPage() {
   return (
-    <main dir="rtl" className="bg-[#f7f9fc]">
+    <main dir="rtl" className="bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/60 to-[#f7f9fc] py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/60 to-white py-20">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-24 top-0 h-72 w-72 rounded-full bg-blue-300/20 blur-3xl" />
           <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl" />
@@ -65,63 +71,124 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Information */}
+      {/* Main Contact Section */}
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-            {/* Details */}
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            {/* Contact Cards */}
             <Reveal>
-              <div className="h-full rounded-[32px] border border-slate-200 bg-white p-7 shadow-sm md:p-9">
-                <h2 className="text-3xl font-black text-[#03152f]">
-                  معلومات التواصل
-                </h2>
+              <div className="rounded-[36px] border border-slate-200 bg-[#f8fafc] p-7 shadow-sm md:p-10">
+                <div>
+                  <span className="text-sm font-black text-amber-600">
+                    معلومات التواصل
+                  </span>
 
-                <p className="mt-3 leading-8 text-slate-600">
-                  يمكنكم التواصل معنا عبر الهاتف، WhatsApp، البريد
-                  الإلكتروني أو Instagram.
-                </p>
+                  <h2 className="mt-2 text-3xl font-black text-[#03152f]">
+                    اختاروا الطريقة الأنسب لكم
+                  </h2>
+
+                  <p className="mt-3 leading-8 text-slate-600">
+                    يمكنكم التواصل معنا عبر الهاتف، WhatsApp، البريد
+                    الإلكتروني أو Instagram.
+                  </p>
+                </div>
 
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {contactItems.map((item) => {
+                  {contactItems.map((item, index) => {
                     const Icon = item.icon;
                     const external = item.href.startsWith("http");
 
                     return (
-                      <a
+                      <Reveal
                         key={item.title}
-                        href={item.href}
-                        target={external ? "_blank" : undefined}
-                        rel={external ? "noopener noreferrer" : undefined}
-                        className="group rounded-2xl border border-slate-200 bg-[#f8fafc] p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/50 hover:shadow-lg"
+                        delay={index * 0.05}
                       >
-                        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-100 text-[#07529c] transition group-hover:bg-[#07529c] group-hover:text-white">
-                          <Icon className="h-6 w-6" />
-                        </span>
+                        <a
+                          href={item.href}
+                          target={external ? "_blank" : undefined}
+                          rel={external ? "noopener noreferrer" : undefined}
+                          className="group block h-full rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+                        >
+                          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-blue-50 text-[#07529c] transition group-hover:bg-[#07529c] group-hover:text-white">
+                            <Icon className="h-7 w-7" />
+                          </span>
 
-                        <h3 className="mt-4 font-black text-[#03152f]">
-                          {item.title}
-                        </h3>
+                          <h3 className="mt-5 text-lg font-black text-[#03152f]">
+                            {item.title}
+                          </h3>
 
-                        <p className="mt-1 break-words text-sm text-slate-600">
-                          {item.value}
-                        </p>
-                      </a>
+                          <p className="mt-1 break-words font-bold text-[#07529c]">
+                            {item.value}
+                          </p>
+
+                          <p className="mt-2 text-sm leading-6 text-slate-500">
+                            {item.description}
+                          </p>
+                        </a>
+                      </Reveal>
                     );
                   })}
                 </div>
+              </div>
+            </Reveal>
 
-                <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
-                  <div className="flex items-start gap-3">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-400 text-[#03152f]">
-                      <Clock3 className="h-5 w-5" />
+            {/* Location and Hours */}
+            <Reveal delay={0.08}>
+              <div className="flex h-full flex-col gap-6">
+                {/* Location */}
+                <div className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-[#07529c] to-[#03152f] p-8 text-white shadow-[0_30px_80px_rgba(3,21,47,.2)]">
+                  <div className="absolute -left-16 -top-16 h-52 w-52 rounded-full bg-white/10" />
+                  <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-amber-400/10" />
+
+                  <div className="relative">
+                    <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15">
+                      <MapPin className="h-8 w-8 text-amber-300" />
+                    </span>
+
+                    <span className="mt-7 block text-sm font-black text-amber-300">
+                      موقع المركز
+                    </span>
+
+                    <h2 className="mt-2 text-4xl font-black">
+                      مدينة المغار
+                    </h2>
+
+                    <p className="mt-4 max-w-md leading-8 text-white/70">
+                      مركز IQ PLUS موجود في مدينة المغار. للحصول على
+                      الموقع الدقيق، أرسلوا لنا رسالة عبر WhatsApp وسنرسل
+                      لكم رابط الوصول مباشرة.
+                    </p>
+
+                    <Button
+                      asChild
+                      size="lg"
+                      className="mt-7 bg-amber-400 font-black text-[#03152f] hover:bg-amber-300"
+                    >
+                      <a
+                        href="https://wa.me/972502933050?text=مرحبا،%20أرغب%20في%20الحصول%20على%20موقع%20مركز%20IQ%20PLUS"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Send className="h-5 w-5" />
+                        اطلبوا الموقع
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Contact Hours */}
+                <div className="rounded-[30px] border border-amber-200 bg-amber-50 p-7">
+                  <div className="flex items-start gap-4">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-amber-400 text-[#03152f]">
+                      <Clock3 className="h-7 w-7" />
                     </span>
 
                     <div>
-                      <h3 className="font-black text-[#03152f]">
+                      <h3 className="text-xl font-black text-[#03152f]">
                         ساعات التواصل
                       </h3>
 
-                      <p className="mt-1 text-sm leading-7 text-slate-600">
+                      <p className="mt-2 leading-7 text-slate-600">
                         يمكنكم إرسال رسالة في أي وقت، وسنقوم بالرد عليكم
                         في أقرب وقت ممكن.
                       </p>
@@ -129,66 +196,22 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="mt-7">
-                  <RegisterButton size="lg">
-                    سجل الآن
-                  </RegisterButton>
-                </div>
-              </div>
-            </Reveal>
+                {/* Registration CTA */}
+                <div className="rounded-[30px] border border-blue-100 bg-blue-50 p-7">
+                  <h3 className="text-xl font-black text-[#03152f]">
+                    مهتمون بإحدى الدورات؟
+                  </h3>
 
-            {/* Map */}
-            <Reveal delay={0.08}>
-              <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm">
-                <div className="flex items-center gap-3 border-b border-slate-100 p-6">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#07529c] text-white">
-                    <MapPin className="h-6 w-6" />
-                  </span>
+                  <p className="mt-2 leading-7 text-slate-600">
+                    اتركوا لنا التفاصيل وسنتواصل معكم لاختيار الدورة
+                    والمجموعة المناسبة.
+                  </p>
 
-                  <div>
-                    <h2 className="text-xl font-black text-[#03152f]">
-                      موقع المركز
-                    </h2>
-
-                    <p className="text-sm text-slate-500">
-                      المغار
-                    </p>
+                  <div className="mt-5">
+                    <RegisterButton size="lg">
+                      سجل الآن
+                    </RegisterButton>
                   </div>
-                </div>
-
-                <div className="h-[480px] w-full">
-                  <iframe
-                    title="موقع IQ PLUS في المغار"
-                    src="https://www.google.com/maps?q=IQ%20PLUS%20Maghar%20Israel&output=embed"
-                    width="100%"
-                    height="100%"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="h-full w-full border-0"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <h3 className="font-black text-[#03152f]">
-                      IQ PLUS – المغار
-                    </h3>
-
-                    <p className="mt-1 text-sm text-slate-500">
-                      اضغطوا لفتح الموقع وتلقي تعليمات الوصول.
-                    </p>
-                  </div>
-
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=IQ+PLUS+Maghar+Israel"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#07529c] px-5 font-black text-white transition hover:bg-[#03152f]"
-                  >
-                    <MapPin className="h-4 w-4" />
-                    فتح في خرائط Google
-                  </a>
                 </div>
               </div>
             </Reveal>
