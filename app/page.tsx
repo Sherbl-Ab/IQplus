@@ -5,15 +5,19 @@ import {
   Bot,
   Brain,
   Calculator,
+  CheckCircle2,
+  ChevronDown,
   Code2,
   Cpu,
   GraduationCap,
   Handshake,
   Languages,
+  MessageCircle,
   Quote,
   ShieldCheck,
   Sparkles,
   Star,
+  Trophy,
   Users,
 } from "lucide-react";
 
@@ -21,6 +25,73 @@ import { Reveal } from "@/components/motion-reveal";
 import { RegisterButton } from "@/components/register-button";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+const statistics = [
+  {
+    value: "+20",
+    label: "سنة خبرة",
+  },
+  {
+    value: "2025",
+    label: "سنة التأسيس",
+  },
+  {
+    value: "8+",
+    label: "مجالات تعليمية",
+  },
+];
+
+const heroSkills = [
+  {
+    icon: Brain,
+    label: "تفكير",
+  },
+  {
+    icon: Code2,
+    label: "برمجة",
+  },
+  {
+    icon: Sparkles,
+    label: "إبداع",
+  },
+  {
+    icon: Calculator,
+    label: "رياضيات",
+  },
+];
+
+const featuredCourses = [
+  {
+    icon: Brain,
+    title: "التحضير لامتحان الموهوبين",
+    subtitle: "للصف الثالث – المرحلة الأولى",
+    description:
+      "تدريب مهني على أنماط الأسئلة، استراتيجيات الحل، التركيز وإدارة الوقت.",
+    badge: "التسجيل مفتوح",
+    badgeClass: "bg-emerald-100 text-emerald-700",
+    gradient: "from-[#07529c] to-[#03152f]",
+  },
+  {
+    icon: Languages,
+    title: "العبرية المحكية",
+    subtitle: "تطوير المحادثة والثقة",
+    description:
+      "تكوين جمل صحيحة، توسيع المفردات والتحدث باللغة العبرية بصورة عملية.",
+    badge: "دورة جديدة",
+    badgeClass: "bg-blue-100 text-blue-700",
+    gradient: "from-cyan-600 to-blue-900",
+  },
+  {
+    icon: Trophy,
+    title: "الأعالي في الرياضيات",
+    subtitle: "تفكير رياضي وإثراء",
+    description:
+      "تحديات ومسائل غير اعتيادية لتطوير المنطق، التفكير الرياضي والاستنتاج.",
+    badge: "الأماكن محدودة",
+    badgeClass: "bg-amber-100 text-amber-800",
+    gradient: "from-amber-500 to-orange-700",
+  },
+];
 
 const services = [
   {
@@ -33,7 +104,7 @@ const services = [
     icon: Calculator,
     title: "الرياضيات",
     description:
-      "تقوية، إثراء وتحضير للامتحانات لجميع المراحل وبأسلوب واضح ومتدرج.",
+      "تقوية، إثراء وتحضير للامتحانات لجميع المراحل بأسلوب واضح ومتدرج.",
   },
   {
     icon: Languages,
@@ -58,21 +129,6 @@ const services = [
     title: "الروبوتيكا",
     description:
       "تركيب، تصميم وبرمجة مشاريع روبوتية ضمن تحديات عملية ممتعة.",
-  },
-];
-
-const statistics = [
-  {
-    value: "20+",
-    label: "سنة خبرة",
-  },
-  {
-    value: "2025",
-    label: "سنة التأسيس",
-  },
-  {
-    value: "8+",
-    label: "مجالات تعليمية",
   },
 ];
 
@@ -103,6 +159,30 @@ const advantages = [
   },
 ];
 
+const steps = [
+  {
+    number: "01",
+    icon: MessageCircle,
+    title: "التواصل معنا",
+    description:
+      "تواصلوا معنا للحصول على تفاصيل الدورات، المواعيد والمجموعات المتاحة.",
+  },
+  {
+    number: "02",
+    icon: CheckCircle2,
+    title: "اختيار الدورة",
+    description:
+      "نساعدكم في اختيار البرنامج المناسب لعمر الطالب، مستواه وهدفه.",
+  },
+  {
+    number: "03",
+    icon: GraduationCap,
+    title: "بدء رحلة التعلم",
+    description:
+      "يبدأ الطالب ضمن مجموعة مناسبة مع متابعة تعليمية واضحة ومستمرّة.",
+  },
+];
+
 const reviews = [
   {
     name: "مريان رشرش",
@@ -118,22 +198,31 @@ const reviews = [
   },
 ];
 
-const heroSkills = [
+const faqs = [
   {
-    icon: Brain,
-    label: "تفكير",
+    question: "كيف يتم التسجيل في الدورات؟",
+    answer:
+      "يمكن الضغط على زر سجل الآن، إدخال التفاصيل وإرسالها مباشرة إلى IQ PLUS عبر WhatsApp.",
   },
   {
-    icon: Code2,
-    label: "برمجة",
+    question: "كيف أعرف أي دورة تناسب ابني أو ابنتي؟",
+    answer:
+      "تواصلوا معنا وسنساعدكم في اختيار الدورة والمجموعة المناسبة حسب الصف، المستوى والهدف التعليمي.",
   },
   {
-    icon: Sparkles,
-    label: "إبداع",
+    question: "هل يتم التعليم ضمن مجموعات صغيرة؟",
+    answer:
+      "نعم، نحرص على العمل ضمن مجموعات مناسبة تسمح بالمشاركة، طرح الأسئلة والمتابعة الشخصية.",
   },
   {
-    icon: Calculator,
-    label: "رياضيات",
+    question: "هل توجد متابعة مع الأهل؟",
+    answer:
+      "نعم، نؤمن بأهمية التواصل مع الأهل وتقديم صورة واضحة عن تقدم الطالب واحتياجاته.",
+  },
+  {
+    question: "أين يقع مركز IQ PLUS؟",
+    answer:
+      "يقع مركز IQ PLUS في المغار، ويمكن فتح موقع المركز من خلال صفحة تواصل معنا.",
   },
 ];
 
@@ -144,9 +233,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-white">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-24 top-20 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl" />
-
           <div className="absolute -left-24 bottom-10 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
-
           <div className="absolute right-1/2 top-1/2 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-100" />
         </div>
 
@@ -154,7 +241,7 @@ export default function HomePage() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-black text-[#07529c] shadow-sm">
-                مركز تعليمي 
+                مركز تعليمي متكامل في المغار
               </span>
 
               <h1 className="mt-6 text-5xl font-black leading-[1.15] text-[#03152f] md:text-7xl">
@@ -180,7 +267,6 @@ export default function HomePage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <RegisterButton size="lg">
                   <GraduationCap className="h-5 w-5" />
-
                   سجل الآن
                 </RegisterButton>
 
@@ -197,6 +283,18 @@ export default function HomePage() {
                   >
                     تواصل عبر WhatsApp
                   </a>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="lg"
+                  className="text-[#07529c] hover:bg-blue-50"
+                >
+                  <Link href="/courses">
+                    اكتشف الدورات
+                    <ArrowLeft className="h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
 
@@ -226,7 +324,6 @@ export default function HomePage() {
             <div className="relative min-h-[520px]">
               <div className="absolute inset-x-6 bottom-0 top-8 overflow-hidden rounded-[48px] bg-gradient-to-br from-[#07529c] via-[#0a66b7] to-[#03152f] shadow-[0_35px_90px_rgba(3,21,47,.25)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,.22),transparent_35%)]" />
-
                 <div className="absolute inset-8 rounded-[36px] border border-white/20" />
 
                 <div className="absolute left-1/2 top-1/2 w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-[30px] border border-white/20 bg-white/95 p-7 shadow-2xl backdrop-blur">
@@ -285,8 +382,94 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Featured Courses */}
       <section className="bg-[#f7f9fc] py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex rounded-full bg-amber-100 px-4 py-1.5 text-sm font-black text-amber-800">
+              الدورات الأكثر طلبًا
+            </span>
+
+            <h2 className="mt-4 text-4xl font-black text-[#03152f] md:text-5xl">
+              ابدأوا من البرنامج المناسب
+            </h2>
+
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              دورات مختارة تحظى باهتمام كبير، مع مجموعات ومواعيد يتم
+              تحديثها بصورة مستمرة.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-7 lg:grid-cols-3">
+            {featuredCourses.map((course, index) => {
+              const Icon = course.icon;
+
+              return (
+                <Reveal
+                  key={course.title}
+                  delay={index * 0.07}
+                >
+                  <Card className="group h-full overflow-hidden border-slate-200 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(3,21,47,.15)]">
+                    <CardContent className="p-0">
+                      <div
+                        className={`relative overflow-hidden bg-gradient-to-br ${course.gradient} p-7 text-white`}
+                      >
+                        <div className="absolute -left-12 -top-12 h-40 w-40 rounded-full bg-white/10" />
+
+                        <div className="relative flex items-start justify-between gap-4">
+                          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 backdrop-blur">
+                            <Icon className="h-8 w-8" />
+                          </span>
+
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-black ${course.badgeClass}`}
+                          >
+                            {course.badge}
+                          </span>
+                        </div>
+
+                        <span className="relative mt-7 block text-sm font-bold text-white/70">
+                          {course.subtitle}
+                        </span>
+
+                        <h3 className="relative mt-1 text-2xl font-black">
+                          {course.title}
+                        </h3>
+                      </div>
+
+                      <div className="p-7">
+                        <p className="min-h-[105px] leading-8 text-slate-600">
+                          {course.description}
+                        </p>
+
+                        <div className="mt-6 flex flex-wrap gap-3">
+                          <RegisterButton>
+                            سجل الآن
+                          </RegisterButton>
+
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="border-slate-300 text-[#07529c]"
+                          >
+                            <Link href="/courses">
+                              التفاصيل
+                              <ArrowLeft className="h-4 w-4" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-4">
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="inline-flex rounded-full border border-blue-100 bg-white px-4 py-1.5 text-sm font-black text-[#07529c] shadow-sm">
@@ -317,10 +500,8 @@ export default function HomePage() {
                       <div className="relative overflow-hidden bg-gradient-to-br from-[#07529c] to-[#03152f] px-6 py-8 text-white">
                         <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-white/10" />
 
-                        <div className="absolute -bottom-14 -right-8 h-40 w-40 rounded-full bg-amber-400/10" />
-
                         <div className="relative flex items-center justify-between">
-                          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 backdrop-blur">
+                          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15">
                             <Icon className="h-8 w-8" />
                           </div>
 
@@ -344,7 +525,6 @@ export default function HomePage() {
                           className="mt-5 inline-flex items-center gap-2 font-black text-[#07529c] transition group-hover:text-amber-600"
                         >
                           اقرأ المزيد
-
                           <ArrowLeft className="h-4 w-4" />
                         </Link>
                       </div>
@@ -354,23 +534,11 @@ export default function HomePage() {
               );
             })}
           </div>
-
-          <div className="mt-12 text-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#07529c] px-8 text-white hover:bg-[#03152f]"
-            >
-              <Link href="/courses">
-                عرض جميع الدورات
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 
       {/* Why IQ PLUS */}
-      <section className="bg-[radial-gradient(circle_at_50%_0,rgba(37,99,235,.18),transparent_40%),linear-gradient(135deg,#020e22,#062858)] py-24 text-white">
+      <section className="bg-gradient-to-br from-[#03152f] to-[#0a5ca8] py-24 text-white">
         <div className="mx-auto max-w-7xl px-4">
           <Reveal className="text-center">
             <span className="inline-flex rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-sm font-black text-amber-300">
@@ -391,12 +559,12 @@ export default function HomePage() {
                   key={advantage.title}
                   delay={index * 0.07}
                 >
-                  <div className="h-full rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/[0.07]">
+                  <div className="h-full rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/[0.08]">
                     <span className="text-3xl font-black text-amber-300">
                       0{index + 1}
                     </span>
 
-                    <Icon className="mt-5 h-7 w-7 text-blue-300" />
+                    <Icon className="mt-5 h-7 w-7 text-blue-200" />
 
                     <h3 className="mt-4 text-lg font-black">
                       {advantage.title}
@@ -404,6 +572,52 @@ export default function HomePage() {
 
                     <p className="mt-2 text-sm leading-7 text-white/65">
                       {advantage.description}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="bg-[#f7f9fc] py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex rounded-full bg-blue-50 px-4 py-1.5 text-sm font-black text-[#07529c]">
+              كيف نبدأ؟
+            </span>
+
+            <h2 className="mt-4 text-4xl font-black text-[#03152f] md:text-5xl">
+              ثلاث خطوات بسيطة
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+
+              return (
+                <Reveal
+                  key={step.number}
+                  delay={index * 0.08}
+                >
+                  <div className="relative h-full rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+                    <span className="absolute left-6 top-5 text-5xl font-black text-slate-100">
+                      {step.number}
+                    </span>
+
+                    <span className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-[#07529c] to-[#03152f] text-white">
+                      <Icon className="h-8 w-8" />
+                    </span>
+
+                    <h3 className="mt-6 text-xl font-black text-[#03152f]">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-3 leading-8 text-slate-600">
+                      {step.description}
                     </p>
                   </div>
                 </Reveal>
@@ -424,10 +638,6 @@ export default function HomePage() {
             <h2 className="mt-4 text-4xl font-black text-[#03152f] md:text-5xl">
               ثقة الأهالي هي أجمل شهادة
             </h2>
-
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              كلمات نعتز بها وتعكس تجربة الأهالي مع برامج IQ PLUS.
-            </p>
           </Reveal>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -445,7 +655,7 @@ export default function HomePage() {
                     </p>
 
                     <div className="mt-6 flex items-center gap-3">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#03152f] font-black text-white">
+                      <span className="grid h-12 w-12 place-items-center rounded-full bg-[#03152f] font-black text-white">
                         {review.name[0]}
                       </span>
 
@@ -476,28 +686,101 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-[#f7f9fc] py-24">
+        <div className="mx-auto max-w-5xl px-4">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex rounded-full bg-blue-50 px-4 py-1.5 text-sm font-black text-[#07529c]">
+              الأسئلة الشائعة
+            </span>
+
+            <h2 className="mt-4 text-4xl font-black text-[#03152f] md:text-5xl">
+              كل ما تحتاجون إلى معرفته
+            </h2>
+
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              إجابات سريعة عن التسجيل، الدورات وطريقة العمل.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 space-y-4">
+            {faqs.map((faq, index) => (
+              <Reveal
+                key={faq.question}
+                delay={index * 0.04}
+              >
+                <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:border-blue-200 open:shadow-md">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black text-[#03152f]">
+                    <span>{faq.question}</span>
+
+                    <ChevronDown className="h-5 w-5 shrink-0 text-[#07529c] transition group-open:rotate-180" />
+                  </summary>
+
+                  <p className="mt-4 border-t border-slate-100 pt-4 leading-8 text-slate-600">
+                    {faq.answer}
+                  </p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10 text-center">
+            <p className="text-slate-600">
+              لديكم سؤال آخر؟
+            </p>
+
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="mt-4 border-[#07529c] text-[#07529c] hover:bg-blue-50"
+            >
+              <a
+                href="https://wa.me/972502933050"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                اسألوا عبر WhatsApp
+              </a>
+            </Button>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Final CTA */}
-      <section className="bg-gradient-to-l from-blue-950 to-blue-800 py-12 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 text-center md:flex-row md:text-right">
+      <section className="bg-gradient-to-l from-[#03152f] to-[#0a5ca8] py-16 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-7 px-4 text-center md:flex-row md:text-right">
           <div>
             <span className="font-black text-amber-300">
               جاهزون للانطلاق؟
             </span>
 
-            <h2 className="mt-1 text-3xl font-black">
+            <h2 className="mt-2 text-3xl font-black md:text-4xl">
               امنحوا أبناءكم بداية أقوى اليوم
             </h2>
 
-            <p className="mt-2 text-sm text-white/65">
-              تواصلوا معنا للحصول على تفاصيل الدورات والمجموعات المتاحة.
+            <p className="mt-3 text-white/65">
+              تواصلوا معنا واحصلوا على تفاصيل الدورات والمجموعات المتاحة.
             </p>
           </div>
 
-          <RegisterButton size="lg">
-            <GraduationCap className="h-5 w-5" />
+          <div className="flex flex-wrap justify-center gap-3">
+            <RegisterButton size="lg">
+              <GraduationCap className="h-5 w-5" />
+              سجل الآن
+            </RegisterButton>
 
-            سجل الآن
-          </RegisterButton>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-[#03152f]"
+            >
+              <Link href="/courses">
+                عرض جميع الدورات
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </main>
