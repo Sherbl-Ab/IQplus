@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -67,9 +68,9 @@ const featuredCourses = [
     subtitle: "للصف الثالث – المرحلة الأولى",
     description:
       "تدريب مهني على أنماط الأسئلة، استراتيجيات الحل، التركيز وإدارة الوقت.",
+    image: "/courses/gifted-course-clean.png",
     badge: "التسجيل مفتوح",
     badgeClass: "bg-emerald-100 text-emerald-700",
-    gradient: "from-[#07529c] to-[#03152f]",
   },
   {
     icon: Languages,
@@ -77,9 +78,9 @@ const featuredCourses = [
     subtitle: "تطوير المحادثة والثقة",
     description:
       "تكوين جمل صحيحة، توسيع المفردات والتحدث باللغة العبرية بصورة عملية.",
+    image: "/courses/hebrew-course-clean.png",
     badge: "دورة جديدة",
     badgeClass: "bg-blue-100 text-blue-700",
-    gradient: "from-cyan-600 to-blue-900",
   },
   {
     icon: Trophy,
@@ -87,9 +88,9 @@ const featuredCourses = [
     subtitle: "تفكير رياضي وإثراء",
     description:
       "تحديات ومسائل غير اعتيادية لتطوير المنطق، التفكير الرياضي والاستنتاج.",
+    image: "/courses/math-course-clean.png",
     badge: "الأماكن محدودة",
     badgeClass: "bg-amber-100 text-amber-800",
-    gradient: "from-amber-500 to-orange-700",
   },
 ];
 
@@ -135,9 +136,9 @@ const services = [
 const advantages = [
   {
     icon: ShieldCheck,
-    title: "خبرة تتجاوز 20 عامًا",
+    title: "خبرة تعليمية واسعة",
     description:
-      "معرفة عميقة باحتياجات الطلاب وأساليب التعليم التي تحقق نتائج حقيقية.",
+      "طاقم بخبرة طويلة في التدريس، المتابعة وبناء البرامج التعليمية.",
   },
   {
     icon: Users,
@@ -233,7 +234,9 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-white">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-24 top-20 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl" />
+
           <div className="absolute -left-24 bottom-10 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
+
           <div className="absolute right-1/2 top-1/2 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-100" />
         </div>
 
@@ -324,6 +327,7 @@ export default function HomePage() {
             <div className="relative min-h-[520px]">
               <div className="absolute inset-x-6 bottom-0 top-8 overflow-hidden rounded-[48px] bg-gradient-to-br from-[#07529c] via-[#0a66b7] to-[#03152f] shadow-[0_35px_90px_rgba(3,21,47,.25)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,.22),transparent_35%)]" />
+
                 <div className="absolute inset-8 rounded-[36px] border border-white/20" />
 
                 <div className="absolute left-1/2 top-1/2 w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-[30px] border border-white/20 bg-white/95 p-7 shadow-2xl backdrop-blur">
@@ -411,30 +415,36 @@ export default function HomePage() {
                 >
                   <Card className="group h-full overflow-hidden border-slate-200 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(3,21,47,.15)]">
                     <CardContent className="p-0">
-                      <div
-                        className={`relative overflow-hidden bg-gradient-to-br ${course.gradient} p-7 text-white`}
-                      >
-                        <div className="absolute -left-12 -top-12 h-40 w-40 rounded-full bg-white/10" />
+                      <div className="relative h-64 overflow-hidden">
+                        <Image
+                          src={course.image}
+                          alt={course.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 33vw"
+                          className="object-cover transition duration-500 group-hover:scale-105"
+                        />
 
-                        <div className="relative flex items-start justify-between gap-4">
-                          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 backdrop-blur">
-                            <Icon className="h-8 w-8" />
-                          </span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#03152f] via-[#03152f]/25 to-transparent" />
 
-                          <span
-                            className={`rounded-full px-3 py-1 text-xs font-black ${course.badgeClass}`}
-                          >
-                            {course.badge}
-                          </span>
-                        </div>
-
-                        <span className="relative mt-7 block text-sm font-bold text-white/70">
-                          {course.subtitle}
+                        <span
+                          className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black ${course.badgeClass}`}
+                        >
+                          {course.badge}
                         </span>
 
-                        <h3 className="relative mt-1 text-2xl font-black">
-                          {course.title}
-                        </h3>
+                        <span className="absolute right-4 top-4 grid h-12 w-12 place-items-center rounded-2xl bg-white/90 text-[#07529c] shadow-lg backdrop-blur">
+                          <Icon className="h-6 w-6" />
+                        </span>
+
+                        <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                          <span className="block text-sm font-bold text-white/75">
+                            {course.subtitle}
+                          </span>
+
+                          <h3 className="mt-1 text-2xl font-black">
+                            {course.title}
+                          </h3>
+                        </div>
                       </div>
 
                       <div className="p-7">
