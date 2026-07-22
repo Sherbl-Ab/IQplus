@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -18,9 +19,9 @@ const quickLinks = [
   { href: "/contact", label: "تواصل معنا" },
 ];
 
-const courseLinks = [
+const courses = [
   "التحضير لامتحان الموهوبين",
-  "مسابقة الأعالي في الرياضيات",
+  "الأعالي في الرياضيات",
   "الرياضيات",
   "اللغة الإنجليزية",
   "اللغة العبرية",
@@ -59,35 +60,48 @@ const contactItems = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#03152f] text-white">
+    <footer
+      dir="rtl"
+      className="relative overflow-hidden bg-[#03152f] text-white"
+    >
+      {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
+        <div className="absolute -right-32 top-0 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-amber-400/10 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
+        {/* Main footer */}
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.25fr_0.8fr_1fr_1.1fr]">
           {/* Brand */}
           <div>
-            <div className="inline-flex rounded-3xl bg-white p-5 shadow-xl">
-              <img
-                src="/logo.png"
+            <div className="inline-flex items-center justify-center rounded-[30px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/iqplus-logo.jpg"
                 alt="IQ PLUS"
+                width={190}
+                height={100}
                 className="h-20 w-auto object-contain"
               />
             </div>
 
-            <p className="mt-6 max-w-sm text-base leading-8 text-white/65">
+            <h2 className="mt-6 text-2xl font-black text-white">
+              IQ PLUS
+            </h2>
+
+            <p className="mt-3 max-w-sm text-base leading-8 text-white/65">
               تعليم حديث، متابعة مهنية وبرامج مصممة لمساعدة كل طالب
               على التقدّم والتميّز.
             </p>
 
             <div className="mt-6">
-              <RegisterButton size="lg">سجل الآن</RegisterButton>
+              <RegisterButton size="lg">
+                سجل الآن
+              </RegisterButton>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick links */}
           <div>
             <h3 className="text-xl font-black text-amber-400">
               روابط سريعة
@@ -98,7 +112,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="w-fit font-bold text-white/80 transition hover:translate-x-[-4px] hover:text-amber-300"
+                  className="w-fit font-bold text-white/75 transition duration-200 hover:-translate-x-1 hover:text-amber-300"
                 >
                   {link.label}
                 </Link>
@@ -113,11 +127,11 @@ export function Footer() {
             </h3>
 
             <div className="mt-6 flex flex-col gap-3">
-              {courseLinks.map((course) => (
+              {courses.map((course) => (
                 <Link
                   key={course}
                   href="/courses"
-                  className="w-fit font-bold text-white/80 transition hover:translate-x-[-4px] hover:text-amber-300"
+                  className="w-fit font-bold text-white/75 transition duration-200 hover:-translate-x-1 hover:text-amber-300"
                 >
                   {course}
                 </Link>
@@ -134,22 +148,17 @@ export function Footer() {
             <div className="mt-6 space-y-4">
               {contactItems.map((item) => {
                 const Icon = item.icon;
+                const external = item.href.startsWith("http");
 
                 return (
                   <a
                     key={item.label}
                     href={item.href}
-                    target={
-                      item.href.startsWith("http") ? "_blank" : undefined
-                    }
-                    rel={
-                      item.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="group flex items-center gap-3 text-white/80 transition hover:text-white"
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    className="group flex items-center gap-3 text-white/75 transition hover:text-white"
                   >
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/10 text-amber-400 transition group-hover:bg-amber-400 group-hover:text-[#03152f]">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/10 text-amber-400 transition duration-200 group-hover:bg-amber-400 group-hover:text-[#03152f]">
                       <Icon className="h-5 w-5" />
                     </span>
 
@@ -163,6 +172,7 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-center text-sm text-white/45 md:flex-row">
           <span>
             © {new Date().getFullYear()} IQ PLUS. جميع الحقوق محفوظة.
