@@ -28,7 +28,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const statistics = [
   {
-    value: "+20",
+    value: "20+",
     label: "خبرة طاقمنا التعليمية",
   },
   {
