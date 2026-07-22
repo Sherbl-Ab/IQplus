@@ -244,7 +244,7 @@ export default function HomePage() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-black text-[#07529c] shadow-sm">
-                مركز تعليمي متكامل في المغار
+                مركز تعليمي   
               </span>
 
               <h1 className="mt-6 text-5xl font-black leading-[1.15] text-[#03152f] md:text-7xl">
@@ -448,7 +448,7 @@ export default function HomePage() {
                       </div>
 
                       <div className="p-7">
-                        <p className="min-h-[105px] leading-8 text-slate-600">
+                        <p className="min-h-[80px] leading-8 text-slate-600">
                           {course.description}
                         </p>
 
