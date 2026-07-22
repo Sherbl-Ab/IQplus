@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -68,9 +67,9 @@ const featuredCourses = [
     subtitle: "للصف الثالث – المرحلة الأولى",
     description:
       "تدريب مهني على أنماط الأسئلة، استراتيجيات الحل، التركيز وإدارة الوقت.",
-    image: "/courses/gifted-course-clean.png",
     badge: "التسجيل مفتوح",
     badgeClass: "bg-emerald-100 text-emerald-700",
+    gradient: "from-[#07529c] to-[#03152f]",
   },
   {
     icon: Languages,
@@ -78,9 +77,9 @@ const featuredCourses = [
     subtitle: "تطوير المحادثة والثقة",
     description:
       "تكوين جمل صحيحة، توسيع المفردات والتحدث باللغة العبرية بصورة عملية.",
-    image: "/courses/hebrew-course-clean.png",
     badge: "دورة جديدة",
     badgeClass: "bg-blue-100 text-blue-700",
+    gradient: "from-cyan-600 to-blue-900",
   },
   {
     icon: Trophy,
@@ -88,9 +87,9 @@ const featuredCourses = [
     subtitle: "تفكير رياضي وإثراء",
     description:
       "تحديات ومسائل غير اعتيادية لتطوير المنطق، التفكير الرياضي والاستنتاج.",
-    image: "/courses/math-course-clean.png",
     badge: "الأماكن محدودة",
     badgeClass: "bg-amber-100 text-amber-800",
+    gradient: "from-amber-500 to-orange-700",
   },
 ];
 
@@ -234,9 +233,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-white">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-24 top-20 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl" />
-
           <div className="absolute -left-24 bottom-10 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
-
           <div className="absolute right-1/2 top-1/2 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-100" />
         </div>
 
@@ -244,22 +241,15 @@ export default function HomePage() {
           <Reveal>
             <div className="max-w-2xl">
               <span className="inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-black text-[#07529c] shadow-sm">
-                مركز تعليمي   
+                مركز تعليمي متكامل في المغار
               </span>
 
               <h1 className="mt-6 text-5xl font-black leading-[1.15] text-[#03152f] md:text-7xl">
                 نصنع جيلاً
                 <br />
-
-                <span className="text-[#0a5ca8]">
-                  يتعلّم ويبدع
-                </span>
-
+                <span className="text-[#0a5ca8]">يتعلّم ويبدع</span>
                 <br />
-
-                <span className="text-amber-500">
-                  ويتقدّم
-                </span>
+                <span className="text-amber-500">ويتقدّم</span>
               </h1>
 
               <p className="mt-6 max-w-xl text-lg leading-9 text-slate-600">
@@ -327,7 +317,6 @@ export default function HomePage() {
             <div className="relative min-h-[520px]">
               <div className="absolute inset-x-6 bottom-0 top-8 overflow-hidden rounded-[48px] bg-gradient-to-br from-[#07529c] via-[#0a66b7] to-[#03152f] shadow-[0_35px_90px_rgba(3,21,47,.25)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,.22),transparent_35%)]" />
-
                 <div className="absolute inset-8 rounded-[36px] border border-white/20" />
 
                 <div className="absolute left-1/2 top-1/2 w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-[30px] border border-white/20 bg-white/95 p-7 shadow-2xl backdrop-blur">
@@ -409,53 +398,43 @@ export default function HomePage() {
               const Icon = course.icon;
 
               return (
-                <Reveal
-                  key={course.title}
-                  delay={index * 0.07}
-                >
+                <Reveal key={course.title} delay={index * 0.07}>
                   <Card className="group h-full overflow-hidden border-slate-200 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(3,21,47,.15)]">
                     <CardContent className="p-0">
-                      <div className="relative h-64 overflow-hidden">
-                        <Image
-                          src={course.image}
-                          alt={course.title}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 33vw"
-                          className="object-cover object-top transition duration-500 group-hover:scale-105"
-                        />
+                      <div
+                        className={`relative overflow-hidden bg-gradient-to-br ${course.gradient} p-7 text-white`}
+                      >
+                        <div className="absolute -left-12 -top-12 h-40 w-40 rounded-full bg-white/10" />
+                        <div className="absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-white/5" />
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#03152f] via-[#03152f]/25 to-transparent" />
-
-                        <span
-                          className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-black ${course.badgeClass}`}
-                        >
-                          {course.badge}
-                        </span>
-
-                        <span className="absolute right-4 top-4 grid h-12 w-12 place-items-center rounded-2xl bg-white/90 text-[#07529c] shadow-lg backdrop-blur">
-                          <Icon className="h-6 w-6" />
-                        </span>
-
-                        <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                          <span className="block text-sm font-bold text-white/75">
-                            {course.subtitle}
+                        <div className="relative flex items-start justify-between gap-4">
+                          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 backdrop-blur">
+                            <Icon className="h-8 w-8" />
                           </span>
 
-                          <h3 className="mt-1 text-2xl font-black">
-                            {course.title}
-                          </h3>
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-black ${course.badgeClass}`}
+                          >
+                            {course.badge}
+                          </span>
                         </div>
+
+                        <span className="relative mt-7 block text-sm font-bold text-white/70">
+                          {course.subtitle}
+                        </span>
+
+                        <h3 className="relative mt-1 text-2xl font-black">
+                          {course.title}
+                        </h3>
                       </div>
 
                       <div className="p-7">
-                        <p className="min-h-[50px] leading-8 text-slate-600">
+                        <p className="min-h-[80px] leading-8 text-slate-600">
                           {course.description}
                         </p>
 
                         <div className="mt-6 flex flex-wrap gap-3">
-                          <RegisterButton>
-                            سجل الآن
-                          </RegisterButton>
+                          <RegisterButton>سجل الآن</RegisterButton>
 
                           <Button
                             asChild
@@ -501,10 +480,7 @@ export default function HomePage() {
               const Icon = service.icon;
 
               return (
-                <Reveal
-                  key={service.title}
-                  delay={index * 0.05}
-                >
+                <Reveal key={service.title} delay={index * 0.05}>
                   <Card className="group h-full overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-2 hover:border-amber-300 hover:shadow-[0_25px_70px_rgba(3,21,47,.12)]">
                     <CardContent className="p-0">
                       <div className="relative overflow-hidden bg-gradient-to-br from-[#07529c] to-[#03152f] px-6 py-8 text-white">
@@ -565,10 +541,7 @@ export default function HomePage() {
               const Icon = advantage.icon;
 
               return (
-                <Reveal
-                  key={advantage.title}
-                  delay={index * 0.07}
-                >
+                <Reveal key={advantage.title} delay={index * 0.07}>
                   <div className="h-full rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/[0.08]">
                     <span className="text-3xl font-black text-amber-300">
                       0{index + 1}
@@ -591,7 +564,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Steps */}
       <section className="bg-[#f7f9fc] py-24">
         <div className="mx-auto max-w-7xl px-4">
           <Reveal className="mx-auto max-w-3xl text-center">
@@ -609,10 +582,7 @@ export default function HomePage() {
               const Icon = step.icon;
 
               return (
-                <Reveal
-                  key={step.number}
-                  delay={index * 0.08}
-                >
+                <Reveal key={step.number} delay={index * 0.08}>
                   <div className="relative h-full rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
                     <span className="absolute left-6 top-5 text-5xl font-black text-slate-100">
                       {step.number}
@@ -652,10 +622,7 @@ export default function HomePage() {
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {reviews.map((review, index) => (
-              <Reveal
-                key={review.name}
-                delay={index * 0.06}
-              >
+              <Reveal key={review.name} delay={index * 0.06}>
                 <Card className="h-full border-slate-200 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
                   <CardContent className="p-7">
                     <Quote className="h-10 w-10 text-amber-400" />
@@ -715,10 +682,7 @@ export default function HomePage() {
 
           <div className="mt-12 space-y-4">
             {faqs.map((faq, index) => (
-              <Reveal
-                key={faq.question}
-                delay={index * 0.04}
-              >
+              <Reveal key={faq.question} delay={index * 0.04}>
                 <details className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm open:border-blue-200 open:shadow-md">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black text-[#03152f]">
                     <span>{faq.question}</span>
@@ -735,9 +699,7 @@ export default function HomePage() {
           </div>
 
           <Reveal className="mt-10 text-center">
-            <p className="text-slate-600">
-              لديكم سؤال آخر؟
-            </p>
+            <p className="text-slate-600">لديكم سؤال آخر؟</p>
 
             <Button
               asChild
@@ -786,9 +748,7 @@ export default function HomePage() {
               size="lg"
               className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-[#03152f]"
             >
-              <Link href="/courses">
-                عرض جميع الدورات
-              </Link>
+              <Link href="/courses">عرض جميع الدورات</Link>
             </Button>
           </div>
         </div>
