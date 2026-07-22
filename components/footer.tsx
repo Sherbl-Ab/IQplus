@@ -11,30 +11,11 @@ import {
 import { RegisterButton } from "@/components/register-button";
 
 const quickLinks = [
-  {
-    href: "/",
-    label: "الرئيسية",
-  },
-  {
-    href: "/about",
-    label: "من نحن",
-  },
-  {
-    href: "/courses",
-    label: "الدورات",
-  },
-  {
-    href: "/gallery",
-    label: "معرض الصور",
-  },
-  {
-    href: "/reviews",
-    label: "آراء الأهالي",
-  },
-  {
-    href: "/contact",
-    label: "تواصل معنا",
-  },
+  { href: "/", label: "الرئيسية" },
+  { href: "/about", label: "من نحن" },
+  { href: "/courses", label: "الدورات" },
+  { href: "/reviews", label: "آراء الأهالي" },
+  { href: "/contact", label: "تواصل معنا" },
 ];
 
 const courseLinks = [
@@ -48,69 +29,95 @@ const courseLinks = [
   "الروبوتيكا",
 ];
 
+const contactItems = [
+  {
+    icon: Phone,
+    label: "050-2933050",
+    href: "tel:0502933050",
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    href: "https://wa.me/972502933050",
+  },
+  {
+    icon: Mail,
+    label: "IQPluss2025@gmail.com",
+    href: "mailto:IQPluss2025@gmail.com",
+  },
+  {
+    icon: Instagram,
+    label: "@iqplus_center",
+    href: "https://www.instagram.com/iqplus_center",
+  },
+  {
+    icon: MapPin,
+    label: "المغار",
+    href: "/contact",
+  },
+];
+
 export function Footer() {
   return (
-    <footer className="bg-[#03152f] text-white">
-      {/* Main Footer */}
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden bg-[#03152f] text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              className="inline-flex rounded-3xl bg-white p-4 shadow-lg"
-              aria-label="IQ PLUS"
-            >
+            <div className="inline-flex rounded-3xl bg-white p-5 shadow-xl">
               <img
-                src="/iqplus-logo-new.jpg"
-                alt="شعار IQ PLUS"
-                className="h-20 w-44 object-contain"
+                src="/logo.png"
+                alt="IQ PLUS"
+                className="h-20 w-auto object-contain"
               />
-            </Link>
+            </div>
 
-            <p className="mt-6 max-w-sm leading-8 text-white/65">
-              مركز تعليمي متكامل في المغار، يجمع بين الخبرة،
-              المتابعة الشخصية، التكنولوجيا ومهارات المستقبل.
+            <p className="mt-6 max-w-sm text-base leading-8 text-white/65">
+              تعليم حديث، متابعة مهنية وبرامج مصممة لمساعدة كل طالب
+              على التقدّم والتميّز.
             </p>
 
             <div className="mt-6">
-              <RegisterButton>
-                سجل الآن
-              </RegisterButton>
+              <RegisterButton size="lg">سجل الآن</RegisterButton>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-black text-amber-300">
+            <h3 className="text-xl font-black text-amber-400">
               روابط سريعة
             </h3>
 
-            <nav className="mt-5 space-y-3">
+            <div className="mt-6 flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-sm font-bold text-white/65 transition hover:translate-x-[-4px] hover:text-white"
+                  className="w-fit font-bold text-white/80 transition hover:translate-x-[-4px] hover:text-amber-300"
                 >
                   {link.label}
                 </Link>
               ))}
-            </nav>
+            </div>
           </div>
 
           {/* Courses */}
           <div>
-            <h3 className="text-lg font-black text-amber-300">
+            <h3 className="text-xl font-black text-amber-400">
               دوراتنا
             </h3>
 
-            <div className="mt-5 grid gap-3">
+            <div className="mt-6 flex flex-col gap-3">
               {courseLinks.map((course) => (
                 <Link
                   key={course}
                   href="/courses"
-                  className="text-sm font-bold text-white/65 transition hover:translate-x-[-4px] hover:text-white"
+                  className="w-fit font-bold text-white/80 transition hover:translate-x-[-4px] hover:text-amber-300"
                 >
                   {course}
                 </Link>
@@ -120,109 +127,52 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-black text-amber-300">
+            <h3 className="text-xl font-black text-amber-400">
               تواصل معنا
             </h3>
 
-            <div className="mt-5 space-y-4">
-              <a
-                href="tel:0502933050"
-                className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10">
-                  <Phone className="h-5 w-5 text-amber-300" />
-                </span>
+            <div className="mt-6 space-y-4">
+              {contactItems.map((item) => {
+                const Icon = item.icon;
 
-                <span>
-                  050-2933050
-                </span>
-              </a>
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={
+                      item.href.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      item.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="group flex items-center gap-3 text-white/80 transition hover:text-white"
+                  >
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/10 text-amber-400 transition group-hover:bg-amber-400 group-hover:text-[#03152f]">
+                      <Icon className="h-5 w-5" />
+                    </span>
 
-              <a
-                href="https://wa.me/972502933050"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10">
-                  <MessageCircle className="h-5 w-5 text-amber-300" />
-                </span>
-
-                <span>
-                  WhatsApp
-                </span>
-              </a>
-
-              <a
-                href="mailto:IQPluss2025@gmail.com"
-                className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10">
-                  <Mail className="h-5 w-5 text-amber-300" />
-                </span>
-
-                <span className="break-all">
-                  IQPluss2025@gmail.com
-                </span>
-              </a>
-
-              <a
-                href="https://www.instagram.com/iqplus_center"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10">
-                  <Instagram className="h-5 w-5 text-amber-300" />
-                </span>
-
-                <span>
-                  @iqplus_center
-                </span>
-              </a>
-
-              <a
-                href="https://www.google.com/maps/place/32%C2%B053'04.1%22N+35%C2%B024'43.8%22E/@32.884476,35.412167,17z"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10">
-                  <MapPin className="h-5 w-5 text-amber-300" />
-                </span>
-
-                <span>
-                  المغار
-                </span>
-              </a>
+                    <span className="font-medium">
+                      {item.label}
+                    </span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-center text-sm text-white/45 md:flex-row md:text-right">
-          <p>
-            © 2026 IQ PLUS — جميع الحقوق محفوظة
-          </p>
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-center text-sm text-white/45 md:flex-row">
+          <span>
+            © {new Date().getFullYear()} IQ PLUS. جميع الحقوق محفوظة.
+          </span>
 
-          <p>
-            تعليم • تقدم • تميز
-          </p>
+          <span>
+            مركز IQ PLUS للتعليم والتطوير
+          </span>
         </div>
       </div>
-
-      {/* WhatsApp Floating Button */}
-      <a
-        href="https://wa.me/972502933050"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="التواصل عبر WhatsApp"
-        className="fixed bottom-5 left-5 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_18px_45px_rgba(0,0,0,.25)] transition hover:-translate-y-1 hover:scale-105"
-      >
-        <MessageCircle className="h-8 w-8" />
-      </a>
     </footer>
   );
 }
