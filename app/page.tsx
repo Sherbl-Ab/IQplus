@@ -448,7 +448,7 @@ export default function HomePage() {
                       </div>
 
                       <div className="p-7">
-                        <p className="min-h-[80px] leading-8 text-slate-600">
+                        <p className="min-h-[50px] leading-8 text-slate-600">
                           {course.description}
                         </p>
 
