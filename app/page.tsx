@@ -421,7 +421,7 @@ export default function HomePage() {
                           alt={course.title}
                           fill
                           sizes="(max-width: 1024px) 100vw, 33vw"
-                          className="object-cover transition duration-500 group-hover:scale-105"
+                          className="object-cover object-top transition duration-500 group-hover:scale-105"
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-[#03152f] via-[#03152f]/25 to-transparent" />
