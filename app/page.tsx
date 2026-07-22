@@ -29,7 +29,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const statistics = [
   {
     value: "+20",
-    label: "سنة خبرة",
+    label: "خبرة طاقمنا التعليمية",
   },
   {
     value: "2025",
@@ -37,7 +37,7 @@ const statistics = [
   },
   {
     value: "8+",
-    label: "مجالات تعليمية",
+    label: "برامج ودورات",
   },
 ];
 
