@@ -220,9 +220,9 @@ const faqs = [
       "نعم، نؤمن بأهمية التواصل مع الأهل وتقديم صورة واضحة عن تقدم الطالب واحتياجاته.",
   },
   {
-    question: "أين يقع مركز IQ PLUS؟",
-    answer:
-      "يقع مركز IQ PLUS في المغار، ويمكن فتح موقع المركز من خلال صفحة تواصل معنا.",
+     question: "أين يقع مركز IQ PLUS؟",
+     answer:
+              "يقع مركز IQ PLUS في مدينة المغار، ويمكن طلب الموقع الدقيق عبر WhatsApp.",
   },
 ];
 
@@ -453,80 +453,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Center Owners */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex rounded-full bg-blue-50 px-4 py-1.5 text-sm font-black text-[#07529c]">
-              إدارة المركز
-            </span>
-
-            <h2 className="mt-4 text-4xl font-black text-[#03152f] md:text-5xl">
-              من يقف وراء IQ PLUS؟
-            </h2>
-
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              يجمع المركز بين المعرفة الأكاديمية، الخبرة التكنولوجية
-              والرؤية التعليمية الحديثة.
-            </p>
-          </Reveal>
-
-          <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
-            <Reveal>
-              <div className="h-full rounded-3xl border border-slate-200 bg-[#f8fafc] p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div className="flex items-center gap-4">
-                  <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#07529c] to-[#03152f] text-2xl font-black text-white">
-                    ل
-                  </span>
-
-                  <div>
-                    <h3 className="text-2xl font-black text-[#03152f]">
-                      لارين عبدالله
-                    </h3>
-
-                    <span className="text-sm font-bold text-amber-600">
-                      مؤسسة ومديرة المركز
-                    </span>
-                  </div>
-                </div>
-
-                <p className="mt-6 leading-8 text-slate-600">
-                  حاصلة على اللقب الأول في علوم الحاسوب من جامعة حيفا،
-                  وطالبة ماجستير في هندسة البرمجيات، وتسعى إلى دمج
-                  التعليم، التكنولوجيا والابتكار في برامج المركز.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.08}>
-              <div className="h-full rounded-3xl border border-slate-200 bg-[#f8fafc] p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div className="flex items-center gap-4">
-                  <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 text-2xl font-black text-white">
-                    ش
-                  </span>
-
-                  <div>
-                    <h3 className="text-2xl font-black text-[#03152f]">
-                      شربل عبدالله
-                    </h3>
-
-                    <span className="text-sm font-bold text-amber-600">
-                      مؤسس ومدير المركز
-                    </span>
-                  </div>
-                </div>
-
-                <p className="mt-6 leading-8 text-slate-600">
-                  مهندس برمجيات، حاصل على اللقب الأول في هندسة البرمجيات
-                  من الكلية الأكاديمية للهندسة أورط براودة، ويساهم في
-                  تطوير البرامج التكنولوجية والتعليمية في المركز.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Services */}
       <section className="bg-[#f7f9fc] py-24">
         <div className="mx-auto max-w-7xl px-4">
